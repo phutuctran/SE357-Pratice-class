@@ -1,0 +1,123 @@
+@startuml
+'left to right direction
+skinparam linetype ortho
+
+class User{
+    int userId
+    string username
+    string password
+    int role 
+    string firstName 
+    string lastName 
+    string phoneNumber
+    string email
+    bool Login() 
+    bool register() 
+    bool updateProfile()
+}
+
+class Car{
+    int carId 
+    string brand 
+    string name
+    string model 
+    string series 
+    string sellerId 
+    string yearOfManufacture
+    bool AddCarModel()
+    bool EditCarModel()
+    bool DeleteCarModel()
+    void ViewListCar()
+}
+
+class CarDetail{
+    int carId
+    int carDetailId
+    string type 
+    'new car/ old car
+    list<image> carImages
+    string MachineNumber
+    string CarFrameNumber
+    int numberOfSeat
+    int numberOfDoor
+    list<string> moreInfos
+    list<string> AccidentHistories
+    list<string> MainternanceHistories
+    bool AddCar()
+    bool EditCar()
+    bool DeleteCar()
+    void ViewCarDetail()
+}
+
+class Transaction{
+    int transactionId 
+    int carDetailId 
+    int buyerId 
+    int sellerId 
+    string status 
+    string paymentStatus 
+    bool CreatTransaction()
+    bool UpdateTransaction()
+    bool CancelTransaction()
+}
+
+abstract class Services{
+    string serviceId
+    string serviceName 
+    string GetServiceName()
+    list<string> GetListServiceOpptions()
+    int getPrice()
+}
+
+class PaymentService{
+    bool PayByCash()
+    bool PayByTransferBank()
+    bool PayByEWallet()
+}
+
+class FinacialSuportService{
+    List<string> listOptions
+    string getOptionDetail()
+}
+
+class ShippingService{
+    List<string, int> listOptionsAndPrice
+    string getServiceInfo()
+}
+
+class InsuranceService{
+    string coverageDetails
+    string getCoverageDetails()
+}
+
+class MaintenanceService{
+    string mainternanceSchedule
+    string GetMaintenanceSchedule()
+}
+
+class Report{
+    int reportId 
+    string type
+    string data
+    string GenerateReport()
+    string ViewReport()
+}
+
+'Inheritance Relationships
+MaintenanceService --|> Services
+ShippingService --|> Services
+InsuranceService --|> Services
+FinacialSuportService --|> Services
+
+User -- Transaction
+Transaction -- Car
+Transaction -- ShippingService
+Transaction -- InsuranceService
+Transaction -- MaintenanceService
+Transaction -- PaymentService
+Report --> Transaction
+
+'Composition Relationship
+Car --* CarDetail
+
+@enduml

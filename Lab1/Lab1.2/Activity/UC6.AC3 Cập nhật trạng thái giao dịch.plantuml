@@ -1,0 +1,18 @@
+@startuml
+title Cập Nhật Trạng Thái Giao Dịch - Activity Diagram
+
+|Nhân Viên|
+start
+:Chọn Giao Dịch Muốn Cập Nhật Trạng Thái;
+|Hệ Thống|
+if (Người Dùng Chọn Giao Dịch Muốn Cập Nhật Trạng Thái?) then (yes)
+  :Hiển Thị Form Chọn Trạng Thái Mới cho Giao Dịch;
+  |Nhân Viên|
+  :Chọn Trạng Thái Mới;
+  |Hệ Thống|
+  :Cập Nhật Trạng Thái Giao Dịch trong Cơ Sở Dữ Liệu;
+  :Xác Nhận Cập Nhật Trạng Thái Giao Dịch Thành Công;
+else (no)
+endif
+stop
+@enduml

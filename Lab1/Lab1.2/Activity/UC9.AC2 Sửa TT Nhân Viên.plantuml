@@ -1,0 +1,22 @@
+@startuml
+title Sửa Thông Tin Nhân Viên - Activity Diagram
+
+|Nhân Viên Quản Lý|
+start
+:Chọn Chức Năng "Sửa Thông Tin Nhân Viên";
+|Hệ Thống|
+if (Nhân Viên Quản Lý Chọn Chức Năng "Sửa Thông Tin Nhân Viên"?) then (yes)
+  :Yêu Cầu ID hoặc Tên Nhân Viên Cần Sửa Thông Tin;
+  |Nhân Viên Quản Lý|
+  :Nhập ID hoặc Tên Nhân Viên;
+  |Hệ Thống|
+  :Hiển Thị Thông Tin Chi Tiết Của Nhân Viên;
+  :Yêu Cầu Nhập Thông Tin Sửa Đổi;
+  |Nhân Viên Quản Lý|
+  :Nhập Thông Tin Sửa Đổi;
+  |Hệ Thống|
+  :Lưu Thông Tin Sửa Đổi và Xác Nhận Thành Công;
+else (no)
+endif
+stop
+@enduml

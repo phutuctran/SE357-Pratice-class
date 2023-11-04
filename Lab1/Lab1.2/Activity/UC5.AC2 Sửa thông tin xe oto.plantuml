@@ -1,0 +1,22 @@
+@startuml
+title Sửa Thông Tin Xe Ô Tô - Activity Diagram
+
+|Người Dùng|
+start
+:Chọn Xe Muốn Sửa Thông Tin;
+|Hệ Thống|
+if (Người Dùng Chọn Xe Muốn Sửa Thông Tin?) then (yes)
+  :Hiển Thị Form Hiện Thông Tin Xe Ô Tô;
+  |Người Dùng|
+  :Chỉnh Sửa Thông Tin Xe Ô Tô;
+  |Hệ Thống|
+  if (Thông Tin Đầy Đủ và Hợp Lệ?) then (yes)
+    :Cập Nhật Thông Tin Xe Ô Tô vào Cơ Sở Dữ Liệu;
+    :Xác Nhận Sửa Thông Tin Xe Ô Tô Thành Công;
+  else (no)
+    :Hiển Thị Thông Báo Lỗi (Ví Dụ: Thông Tin Thiếu Hoặc Không Hợp Lệ);
+  endif
+else (no)
+endif
+stop
+@enduml

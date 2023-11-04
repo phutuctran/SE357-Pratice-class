@@ -1,0 +1,24 @@
+@startuml
+title Cập Nhật Trạng Thái Giao Dịch - Activity Diagram
+
+|Người Dùng|
+start
+:Chọn Giao Dịch Cần Cập Nhật Trạng Thái;
+|Hệ Thống|
+if (Giao Dịch Chưa Hoàn Thành?) then (yes)
+  |Hệ Thống|
+  :Hiển Thị Các Tùy Chọn Trạng Thái;
+  |Người Dùng|
+  :Chọn Trạng Thái Mới;
+  |Hệ Thống|
+  if (Trạng Thái Hợp Lệ?) then (yes)
+    :Cập Nhật Trạng Thái Giao Dịch;
+    :Hiển Thị Thông Báo Cập Nhật Thành Công;
+  else (no)
+    :Hiển Thị Thông Báo Lỗi (Ví Dụ: Trạng Thái Không Hợp Lệ);
+  endif
+else (no)
+  :Hiển Thị Thông Báo Lỗi (Ví Dụ: Giao Dịch Đã Hoàn Thành, Không Thể Cập Nhật Trạng Thái);
+endif
+stop
+@enduml

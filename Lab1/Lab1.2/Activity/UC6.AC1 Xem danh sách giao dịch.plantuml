@@ -1,0 +1,14 @@
+@startuml
+title Xem Danh Sách Các Giao Dịch - Activity Diagram
+
+|Nhân Viên và Khách hàng|
+start
+:Chọn Chức Năng "Xem Danh Sách Các Giao Dịch";
+|Hệ Thống|
+if (Chọn Chức Năng "Xem Danh Sách Các Giao Dịch"?) then (yes)
+  :Truy Vấn Danh Sách Các Giao Dịch Phù Hợp từ Cơ Sở Dữ Liệu;
+  :Hiển Thị Danh Sách Các Giao Dịch cho Người Dùng;
+else (no)
+endif
+stop
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+title Tích Hợp Dịch Vụ Bảo Hiểm - Activity Diagram
+
+|Nhân Viên Quản Lý|
+start
+:Chọn Chức Năng "Tích Hợp Dịch Vụ Bảo Hiểm";
+|Hệ Thống|
+if (Nhân Viên Quản Lý Chọn Chức Năng "Tích Hợp Dịch Vụ Bảo Hiểm"?) then (yes)
+  :Hiển Thị Danh Sách Dịch Vụ Bảo Hiểm;
+  |Nhân Viên Quản Lý|
+  :Chọn Dịch Vụ Bảo Hiểm Cần Tích Hợp;
+  |Hệ Thống|
+  :Yêu Cầu Thông Tin Chi Tiết Của Dịch Vụ Bảo Hiểm;
+  |Nhân Viên Quản Lý|
+  :Nhập Thông Tin Chi Tiết;
+  |Hệ Thống|
+  :Lưu Thông Tin Dịch Vụ Bảo Hiểm Và Xác Nhận Thành Công;
+else (no)
+endif
+stop
+@enduml

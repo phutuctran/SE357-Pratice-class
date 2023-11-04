@@ -1,0 +1,27 @@
+@startuml
+title Thanh Toán Sử Dụng Tiền Mặt - Activity Diagram
+
+|Người Dùng|
+start
+:Chọn Giao Dịch Cần Thanh Toán;
+|Hệ Thống|
+if (Giao Dịch Đã Được Chọn?) then (no)
+  :Hiển Thị Thông Báo Lỗi (Ví Dụ: Giao Dịch Không Hợp Lệ);
+else (yes)
+  :Chuyển Người Dùng Đến Quầy Thanh Toán;
+  |Nhân Viên Thanh Toán|
+  :Nhận Thông Tin Giao Dịch và Tính Tiền;
+  :Nhận Tiền Mặt Từ Người Dùng;
+  :Nhân Viên Kiểm Tra Đủ Số Tiền;
+  |Hệ Thống|
+  if (Tiền Đủ?) then (yes)
+    :Xác Nhận Thanh Toán;
+    :Cập Nhật Trạng Thái Giao Dịch (Ví Dụ: Đã Thanh Toán);
+    :Hiển Thị Hóa Đơn Cho Người Dùng;
+    |Hệ Thống|
+  else (no)
+    :Hiển Thị Thông Báo Lỗi (Ví Dụ: Tiền Không Đủ);
+  endif
+endif
+stop
+@enduml

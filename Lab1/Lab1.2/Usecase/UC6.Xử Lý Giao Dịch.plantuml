@@ -1,6 +1,7 @@
 @startuml
 left to right direction
 actor "Nhân Viên" as employee
+actor "Khách Hàng" as customer
 rectangle "Hệ Thống" {
   usecase "Xem Danh Sách Giao Dịch" as viewTransactions
   usecase "Chuẩn Bị Xe Giao Dịch" as prepareCar
@@ -10,7 +11,8 @@ rectangle "Hệ Thống" {
 employee --> viewTransactions
 employee --> prepareCar 
 employee --> updateTransactionStatus 
+customer --> viewTransactions
 
-prepareCar ..> (Xác Nhận Chuẩn Bị) : <<inclued>>
+prepareCar ..> (Xác Nhận Chuẩn Bị) : <<include>>
 updateTransactionStatus ..> (Cập Nhật Trạng Thái) : <<include>>
 @enduml

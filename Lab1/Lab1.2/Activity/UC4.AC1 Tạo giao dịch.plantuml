@@ -4,8 +4,8 @@ start
 :Chọn Xe và Dịch Vụ Cần Mua;
 :Chọn Phương Thức Thanh Toán;
 :Người Dùng Xác Nhận Thông Tin Giao Dịch;
+|Hệ Thống|
 if (Xác Nhận Thanh Toán?) then (Có)
-  |Hệ Thống|
   :Xử Lý Thanh Toán;
   if (Thanh Toán Thành Công?) then (Có)
     :Lưu Thông Tin Giao Dịch và Xe vào Cơ Sở Dữ Liệu;
@@ -21,7 +21,5 @@ if (Xác Nhận Thanh Toán?) then (Có)
 else (Không)
   :Hiển Thị Thông Báo "Giao Dịch Đã Bị Hủy";
 endif
-
-|Người Dùng|
 stop
 @enduml

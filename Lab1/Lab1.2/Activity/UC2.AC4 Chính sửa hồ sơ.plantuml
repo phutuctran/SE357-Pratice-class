@@ -22,6 +22,5 @@ if (Yêu Cầu Được Chọn?) then (Có)
 else (Không)
   :Hiển Thị Thông Báo "Vui Lòng Chọn Hồ Sơ Cần Chỉnh Sửa";
 endif
-|Người Dùng|
 stop
 @enduml

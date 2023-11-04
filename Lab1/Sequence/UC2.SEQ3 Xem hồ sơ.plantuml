@@ -1,0 +1,20 @@
+@startuml
+title Quản Lý Hồ Sơ Người Dùng – Xem hồ sơ - Sequence Diagram
+
+actor "Người Dùng" as user
+participant "Hệ Thống" as system
+database "Cơ Sở Dữ Liệu" as database
+
+activate user
+user -> system: Yêu cầu xem hồ sơ
+activate system
+system -> database: Truy vấn hồ sơ người dùng
+activate database
+database --> system: Trả về hồ sơ người dùng
+deactivate database
+system --> user: Hiển thị hồ sơ người dùng
+
+deactivate system
+deactivate user
+@enduml
+

@@ -1,0 +1,35 @@
+@startuml
+title Quản Lý Dữ Liệu Xe Ô Tô - Sequence Diagram
+
+actor "Người Quản Lý" as admin
+participant "Hệ Thống" as system
+database "Cơ Sở Dữ Liệu" as database
+
+activate admin
+admin -> system: Yêu Cầu Xem Danh Sách Xe Ô Tô
+activate system
+system -> database: Truy vấn Danh Sách Xe Ô Tô từ Cơ Sở Dữ Liệu
+activate database
+database --> system: Trả về Danh Sách Xe Ô Tô
+deactivate database
+system --> admin: Hiển Thị Danh Sách Xe Ô Tô
+admin -> system: Yêu Cầu Xem Thông Tin Xe Ô Tô (theo ID)
+system -> database: Truy vấn Thông Tin Xe Ô Tô theo ID từ Cơ Sở Dữ Liệu
+activate database
+database --> system: Trả về Thông Tin Xe Ô Tô
+deactivate database
+system --> admin: Hiển Thị Thông Tin Xe Ô Tô
+admin -> system: Yêu Cầu Cập Nhật Thông Tin Xe Ô Tô (theo ID)
+system -> database: Truy vấn Thông Tin Xe Ô Tô theo ID từ Cơ Sở Dữ Liệu
+activate database
+database --> system: Trả về Thông Tin Xe Ô Tô để Cập Nhật
+deactivate database
+admin -> system: Dữ Liệu Cập Nhật
+system -> database: Cập Nhật Thông Tin Xe Ô Tô vào Cơ Sở Dữ Liệu
+activate database
+database --> system: Xác Nhận Lưu Thay Đổi
+deactivate database
+system --> admin: Hiển Thị Kết Quả (Cập Nhật Thành Công hoặc Lỗi)
+deactivate system
+deactivate admin
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+title Xem Báo Cáo - Sequence Diagram
+
+actor "Người Dùng" as user
+participant "Hệ Thống" as system
+database "Cơ Sở Dữ Liệu" as database
+
+activate user
+user -> system: Yêu Cầu Xem Báo Cáo
+activate system
+system -> database: Truy vấn Báo Cáo từ Cơ Sở Dữ Liệu
+activate database
+database --> system: Trả về Dữ Liệu Báo Cáo
+deactivate database
+system --> user: Hiển Thị Báo Cáo cho Người Dùng
+deactivate system
+deactivate user
+@enduml

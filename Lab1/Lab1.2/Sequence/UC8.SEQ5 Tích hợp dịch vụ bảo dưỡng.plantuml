@@ -1,0 +1,24 @@
+@startuml
+title Tích Hợp Dịch Vụ Bảo Dưỡng - Sequence Diagram
+
+actor "Người Dùng" as user
+participant "Hệ Thống" as system
+participant "Dịch Vụ Bảo Dưỡng" as maintenanceService
+database "Cơ Sở Dữ Liệu" as database
+
+activate user
+user -> system: Chọn Dịch Vụ Bảo Dưỡng và Thanh Toán
+activate system
+system -> database: Truy vấn Thông Tin Đơn Hàng từ Cơ Sở Dữ Liệu
+activate database
+database --> system: Trả Về Thông Tin Đơn Hàng
+deactivate database
+system -> maintenanceService: Gửi Yêu Cầu Tích Hợp Dịch Vụ Bảo Dưỡng
+activate maintenanceService
+maintenanceService -> maintenanceService: Xác Nhận Dịch Vụ và Lấy Thông Tin Bảo Dưỡng
+maintenanceService --> system: Trả Về Thông Tin Bảo Dưỡng
+system --> user: Hiển Thị Thông Tin Bảo Dưỡng
+deactivate maintenanceService
+deactivate system
+deactivate user
+@enduml

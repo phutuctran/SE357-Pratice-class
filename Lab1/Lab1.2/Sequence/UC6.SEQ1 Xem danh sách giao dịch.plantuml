@@ -1,0 +1,18 @@
+@startuml
+title Xem Danh Sách Giao Dịch - Sequence Diagram
+
+actor "Người Dùng" as user
+participant "Hệ Thống" as system
+database "Cơ Sở Dữ Liệu" as database
+
+activate user
+user -> system: Yêu Cầu Xem Danh Sách Giao Dịch
+activate system
+system -> database: Truy vấn Danh Sách Giao Dịch từ Cơ Sở Dữ Liệu
+activate database
+database --> system: Trả về Danh Sách Giao Dịch
+deactivate database
+system --> user: Hiển Thị Danh Sách Giao Dịch cho Người Dùng
+deactivate system
+deactivate user
+@enduml

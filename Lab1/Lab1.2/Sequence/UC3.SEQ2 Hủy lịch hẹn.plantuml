@@ -1,0 +1,27 @@
+@startuml
+title Hủy Lịch Hẹn Xem Xe - Sequence Diagram with System Constraints
+
+actor "Người Dùng" as user
+participant "Hệ Thống" as system
+database "Cơ Sở Dữ Liệu" as database
+
+activate user
+user -> system: Chọn Lịch Hẹn Cần Hủy
+activate system
+system -> database: Truy vấn Lịch Hẹn trong Cơ Sở Dữ Liệu
+activate database
+database --> system: Trả Về Thông Tin Lịch Hẹn
+deactivate database
+system -> system: Kiểm Tra Lịch Hẹn có thể Hủy hay không
+alt Lịch Hẹn Có Thể Hủy
+    system -> database: Hủy Lịch Hẹn trong Cơ Sở Dữ Liệu
+    activate database
+    database --> system: Xác Nhận Lịch Hẹn Đã Được Hủy
+    deactivate database
+    system -> user: Xác Nhận Hủy Lịch Hẹn Thành Công
+else Lịch Hẹn Không Thể Hủy
+    system -> user: Thông Báo Lịch Hẹn Không Thể Hủy
+end
+deactivate system
+deactivate user
+@enduml

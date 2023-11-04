@@ -1,0 +1,23 @@
+@startuml
+title Tạo Báo Cáo - Sequence Diagram
+
+actor "Người Dùng" as user
+participant "Hệ Thống" as system
+database "Cơ Sở Dữ Liệu" as database
+
+activate user
+user -> system: Yêu Cầu Tạo Báo Cáo
+activate system
+system -> database: Truy vấn Dữ Liệu Cần Tạo Báo Cáo
+activate database
+database --> system: Trả về Dữ Liệu Để Tạo Báo Cáo
+deactivate database
+system -> system: Tạo Báo Cáo
+system -> database: Lưu Báo Cáo Vào Cơ Sở Dữ Liệu
+activate database
+database --> system: Xác Nhận Lưu Báo Cáo
+deactivate database
+system --> user: Hiển Thị Kết Quả (Tạo Báo Cáo Thành Công hoặc Lỗi)
+deactivate system
+deactivate user
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+title Xóa Thông Tin Xe Ô Tô - Sequence Diagram
+
+actor "Người Dùng" as user
+participant "Hệ Thống" as system
+database "Cơ Sở Dữ Liệu" as database
+
+activate user
+user -> system: Chọn Xe Cần Xóa
+activate system
+system -> database: Truy vấn Thông Tin Xe Ô Tô từ Cơ Sở Dữ Liệu
+activate database
+database --> system: Trả về Thông Tin Xe Ô Tô
+deactivate database
+system -> system: Xác Nhận Yêu Cầu Xóa
+system -> database: Xóa Thông Tin Xe Ô Tô từ Cơ Sở Dữ Liệu
+activate database
+database --> system: Xác Nhận Xóa Thông Tin
+deactivate database
+system --> user: Hiển Thị Kết Quả (Thành Công hoặc Lỗi)
+deactivate system
+deactivate user
+@enduml

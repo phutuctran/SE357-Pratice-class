@@ -1,0 +1,18 @@
+@startuml
+title Tìm Kiếm Kết Quả - Sequence Diagram
+
+actor "Người Dùng" as user
+participant "Hệ Thống" as system
+database "Cơ Sở Dữ Liệu" as database
+
+activate user
+user -> system: Thực hiện Tìm Kiếm (Ví dụ: "Xe Ô Tô Toyota")
+activate system
+system -> database: Truy vấn Dữ Liệu Xe Ô Tô
+activate database
+database --> system: Trả về Kết Quả Tìm Kiếm (Danh sách các xe ô tô)
+deactivate database
+system --> user: Hiển Thị Kết Quả Tìm Kiếm (Danh sách các xe ô tô)
+deactivate system
+deactivate user
+@enduml

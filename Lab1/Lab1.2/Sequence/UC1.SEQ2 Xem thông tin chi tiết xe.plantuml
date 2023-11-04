@@ -1,0 +1,18 @@
+@startuml
+title Xem Chi Tiết Một Mẫu Xe - Sequence Diagram
+
+actor "Người Dùng" as user
+participant "Hệ Thống" as system
+database "Cơ Sở Dữ Liệu" as database
+
+activate user
+user -> system: Chọn Một Chiếc Xe Ô Tô từ Danh Sách
+activate system
+system -> database: Truy vấn Dữ Liệu Chi Tiết Xe Ô Tô
+activate database
+database --> system: Trả về Chi Tiết Xe Ô Tô (Thông tin chi tiết của chiếc xe được chọn)
+deactivate database
+system --> user: Hiển Thị Chi Tiết Xe Ô Tô
+deactivate system
+deactivate user
+@enduml

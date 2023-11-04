@@ -1,0 +1,18 @@
+@startuml
+title Quản Lý Hồ Sơ Người Dùng - Đổi mật khẩu - Sequence Diagram
+
+actor "Người Dùng" as user
+participant "Hệ Thống" as system
+database "Cơ Sở Dữ Liệu" as database
+
+user -> system: Yêu Cầu Đổi Mật Khẩu (Mật khẩu mới)
+activate system
+system -> database: Cập Nhật Mật Khẩu
+activate database
+database --> system: Lưu Mật Khẩu Mới
+deactivate database
+system --> user: Xác Nhận Đổi Mật Khẩu Thành Công
+
+deactivate system
+deactivate user
+@enduml

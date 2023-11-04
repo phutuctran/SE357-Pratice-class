@@ -1,0 +1,24 @@
+@startuml
+title Thanh Toán Sử Dụng Hệ Thống Bên Ngoài (E wallet - trả góp - thẻ tín dụng) - Sequence Diagram
+
+actor "Người Dùng" as user
+participant "Hệ Thống" as system
+participant "Hệ Thống Thanh Toán Bên Ngoài (E-wallet/Credit/Trả góp)" as externalPaymentSystem
+database "Cơ Sở Dữ Liệu" as database
+
+activate user
+user -> system: Yêu Cầu Thanh Toán (transactionId, amount)
+activate system
+system -> database: Truy vấn Giao Dịch (transactionId)
+activate database
+database --> system: Trả Về Thông Tin Giao Dịch
+deactivate database
+system -> externalPaymentSystem: Yêu Cầu Thanh Toán Bên Ngoài (transactionId, amount)
+activate externalPaymentSystem
+externalPaymentSystem --> externalPaymentSystem: Xử Lý Thanh Toán
+externalPaymentSystem --> system: Kết Quả Thanh Toán
+deactivate externalPaymentSystem
+system --> user: Kết Quả Thanh Toán
+deactivate system
+deactivate user
+@enduml

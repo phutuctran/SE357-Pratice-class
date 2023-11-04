@@ -1,0 +1,27 @@
+@startuml
+title Thanh Toán Sử Dụng Hệ Thống Bên Ngoài - Activity Diagram
+
+|Người Dùng|
+start
+:Chọn Giao Dịch Cần Thanh Toán;
+|Hệ Thống|
+if (Giao Dịch Đã Được Chọn?) then (yes)
+  |Hệ Thống|
+  :Chuyển Người Dùng Đến Hệ Thống Thanh Toán Bên Ngoài;
+  |Người Dùng|
+  :Thực Hiện Thanh Toán Trên Hệ Thống Bên Ngoài;
+  |Hệ Thống|
+  if (Thanh Toán Thành Công?) then (yes)
+    |Hệ Thống|
+    :Cập Nhật Trạng Thái Giao Dịch (Ví Dụ: Đã Thanh Toán);
+    :Hiển Thị Thông Báo Thanh Toán Thành Công;
+  else (no)
+    |Hệ Thống|
+    :Hiển Thị Thông Báo Lỗi (Ví Dụ: Thanh Toán Không Thành Công);
+  endif
+else (no)
+  |Hệ Thống|
+  :Hiển Thị Thông Báo Lỗi (Ví Dụ: Giao Dịch Không Hợp Lệ);
+endif
+stop
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+title Xem Báo Cáo - Activity Diagram
+
+|Nhân Viên và Quản Lí|
+start
+:Chọn Báo Cáo Muốn Xem;
+|Hệ Thống|
+if (Người Dùng Chọn Báo Cáo?) then (yes)
+  :Truy Vấn Báo Cáo Từ Cơ Sở Dữ Liệu;
+  :Hiển Thị Báo Cáo Cho Người Dùng;
+else (no)
+endif
+stop
+@enduml

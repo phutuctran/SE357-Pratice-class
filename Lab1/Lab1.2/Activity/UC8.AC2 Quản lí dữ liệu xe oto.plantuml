@@ -1,0 +1,40 @@
+@startuml
+title Quản Lý Dữ Liệu Xe Ô Tô - Activity Diagram
+
+|Nhân Viên Quản Lý|
+start
+:Chọn Chức Năng "Quản Lý Dữ Liệu Xe Ô Tô";
+|Hệ Thống|
+if (Nhân Viên Quản Lý Chọn Chức Năng "Quản Lý Dữ Liệu Xe Ô Tô"?) then (yes)
+  :Hiển Thị Danh Sách Xe Ô Tô và Tùy Chọn Quản Lý;
+  |Nhân Viên Quản Lý|
+  :Chọn Xe Ô Tô Cần Quản Lý;
+  |Hệ Thống|
+  :Hiển Thị Thông Tin Xe Ô Tô và Các Tùy Chọn Quản Lý;
+  :Nhân Viên Quản Lý Chọn Tùy Chọn (Xóa, Sửa, Xem Chi Tiết, vv.);
+  |Hệ Thống|
+  if (Nhân Viên Quản Lý Chọn Xóa Xe Ô Tô?) then (yes)
+    :Xác Nhận Xóa Xe Ô Tô;
+    |Hệ Thống|
+    :Xóa Xe Ô Tô Từ Cơ Sở Dữ Liệu;
+    :Xác Nhận Xóa Thành Công;
+  else (no)
+    if (Nhân Viên Quản Lý Chọn Sửa Thông Tin Xe Ô Tô?) then (yes)
+      :Chọn Thông Tin Cần Sửa;
+      |Nhân Viên Quản Lý|
+      :Nhập Thông Tin Mới;
+      |Hệ Thống|
+      :Cập Nhật Thông Tin Xe Ô Tô Trong Cơ Sở Dữ Liệu;
+      :Xác Nhận Cập Nhật Thành Công;
+    else (no)
+      if (Nhân Viên Quản Lý Chọn Xem Chi Tiết Xe Ô Tô?) then (yes)
+        :Hiển Thị Chi Tiết Xe Ô Tô;
+      else (no)
+        stop
+      endif
+    endif
+  endif
+else (no)
+endif
+stop
+@enduml

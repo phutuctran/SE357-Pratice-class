@@ -20,6 +20,5 @@ if (Xác Nhận Hủy?) then (Có)
 else (Không)
   :Hiển Thị Thông Báo "Hủy Lịch Hẹn Đã Bị Hủy";
 endif
-|Người Dùng|
 stop
 @enduml

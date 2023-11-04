@@ -1,0 +1,17 @@
+@startuml
+left to right direction
+actor "Người Quản Lý" as manager
+actor "Nhân Viên" as employee
+rectangle "Hệ Thống" {
+  usecase "Tạo Báo Cáo" as createReport
+  usecase "Xem Báo Cáo" as viewReport
+}
+
+manager --> createReport 
+manager --> viewReport
+employee --> createReport 
+employee --> viewReport
+
+createReport ..> (Xác Nhận Tạo) : <<include>>
+viewReport ..> (Xem Báo Cáo) : <<include>>
+@enduml

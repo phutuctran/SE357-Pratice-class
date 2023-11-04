@@ -1,0 +1,23 @@
+@startuml
+|Người Dùng|
+start
+:Nhập Thông Tin Đăng Ký (Tên, Email, Mật Khẩu);
+|Hệ Thống|
+if (Thông Tin Hợp Lệ?) then (Có)
+  :Kiểm Tra Độ Dài Mật Khẩu và Định Dạng Email;
+  if (Đúng) then (Có)
+    :Tạo Tài Khoản Người Dùng;
+    if (Tài Khoản Được Tạo Thành Công?) then (Có)
+      :Hiển Thị Thông Báo "Đăng Ký Thành Công";
+    else (Không)
+      :Hiển Thị Thông Báo "Lỗi: Tài Khoản Không Thể Tạo";
+    endif
+  else (Không)
+    :Hiển Thị Thông Báo "Lỗi: Định Dạng Email Hoặc Độ Dài Mật Khẩu Không Đúng";
+  endif
+else (Không)
+  :Hiển Thị Thông Báo "Lỗi: Thông Tin Đăng Ký Không Hợp Lệ";
+endif
+|Người Dùng|
+stop
+@enduml

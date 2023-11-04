@@ -1,0 +1,18 @@
+@startuml
+|Người Dùng|
+start
+:Nhập Từ Khóa Tìm Kiếm;
+|Hệ Thống|
+if (Từ Khóa Được Nhập?) then (Có)
+  :Thực Hiện Tìm Kiếm;
+  if (Xe Tìm Thấy?) then (Có)
+    :Hiển Thị Kết Quả Tìm Kiếm;
+  else (Không)
+    :Hiển Thị Thông Báo "Không Tìm Thấy Xe Phù Hợp";
+  endif
+else (Không)
+  :Hiển Thị Thông Báo "Nhập Từ Khóa Tìm Kiếm";
+endif
+|Người Dùng|
+stop
+@enduml

@@ -115,6 +115,7 @@ Transaction -- ShippingService
 Transaction -- InsuranceService
 Transaction -- MaintenanceService
 Transaction -- PaymentService
+Transaction -- FinacialSuportService
 Report --> Transaction
 
 'Composition Relationship

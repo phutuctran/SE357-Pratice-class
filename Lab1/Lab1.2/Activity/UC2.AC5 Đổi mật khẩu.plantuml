@@ -1,0 +1,31 @@
+@startuml
+|Người Dùng|
+start
+:Chọn Đổi Mật Khẩu;
+|Hệ Thống|
+if (Yêu Cầu Được Chọn?) then (Có)
+  :Hiển Thị Form Đổi Mật Khẩu;
+  |Người Dùng|
+  :Người Dùng Nhập Mật Khẩu Cũ, Mật Khẩu Mới và lưu;
+  |Hệ Thống|
+  :Kiểm Tra Mật Khẩu Hợp Lệ?;
+  if (Mật Khẩu Hợp Lệ?) then (Có)
+    :Lưu Mật Khẩu Mới vào Cơ Sở Dữ Liệu;
+    if (Lưu Thành Công?) then (Có)
+      :Hiển Thị Thông Báo "Mật Khẩu Đã Được Đổi";
+    else (Không)
+      :Hiển Thị Thông Báo "Lỗi: Không Thể Lưu Mật Khẩu Mới";
+    endif
+  else (Không)
+    :Hiển Thị Thông Báo "Lỗi: Mật Khẩu Không Hợp Lệ";
+  endif
+  
+  |Hệ Thống|
+else (Không)
+  :Hiển Thị Thông Báo "Vui Lòng Chọn Đổi Mật Khẩu";
+endif
+|Người Dùng|
+stop
+@enduml
+
+

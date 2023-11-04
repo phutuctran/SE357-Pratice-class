@@ -1,0 +1,18 @@
+@startuml
+|Người Dùng|
+start
+:Nhập Tên Đăng Nhập và Mật Khẩu;
+|Hệ Thống|
+if (Thông Tin Đăng Nhập Đúng?) then (Có)
+  :Xác Thực Thông Tin Đăng Nhập;
+  if (Xác Thực Thành Công?) then (Có)
+    :Chuyển Hướng Đến Trang Chính;
+  else (Không)
+    :Hiển Thị Thông Báo "Sai Tên Đăng Nhập hoặc Mật Khẩu";
+  endif
+else (Không)
+  :Hiển Thị Thông Báo "Vui Lòng Nhập Tên Đăng Nhập và Mật Khẩu";
+endif
+|Người Dùng|
+stop
+@enduml

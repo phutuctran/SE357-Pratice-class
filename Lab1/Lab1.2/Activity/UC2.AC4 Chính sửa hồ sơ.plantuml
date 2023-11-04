@@ -1,0 +1,27 @@
+@startuml
+|Người Dùng|
+start
+:Chọn Chỉnh Sửa Hồ Sơ;
+|Hệ Thống|
+if (Yêu Cầu Được Chọn?) then (Có)
+  :Truy Vấn Hồ Sơ Người Dùng từ Cơ Sở Dữ Liệu;
+  if (Hồ Sơ Tồn Tại?) then (Có)
+    :Hiển Thị Form Chỉnh Sửa Hồ Sơ;
+    |Người Dùng|
+    :Người Dùng Chỉnh Sửa Hồ Sơ;
+    |Hệ Thống|
+    :Lưu Thay Đổi Vào Cơ Sở Dữ Liệu;
+    if (Lưu Thành Công?) then (Có)
+      :Hiển Thị Thông Báo "Hồ Sơ Đã Được Chỉnh Sửa";
+    else (Không)
+      :Hiển Thị Thông Báo "Lỗi: Không Thể Lưu Thay Đổi";
+    endif
+  else (Không)
+    :Hiển Thị Thông Báo "Hồ Sơ Người Dùng Không Tồn Tại";
+  endif
+else (Không)
+  :Hiển Thị Thông Báo "Vui Lòng Chọn Hồ Sơ Cần Chỉnh Sửa";
+endif
+|Người Dùng|
+stop
+@enduml

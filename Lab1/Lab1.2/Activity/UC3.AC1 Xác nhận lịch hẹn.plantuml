@@ -1,0 +1,22 @@
+@startuml
+|Người Dùng|
+start
+:Chọn Tạo Lịch Hẹn Xem Xe;
+|Hệ Thống|
+if (Yêu Cầu Được Chọn?) then (Có)
+  |Người Dùng|
+  :Người Dùng Nhập Thông Tin Lịch Hẹn;
+  |Hệ Thống|
+  :Lưu Thông Tin Lịch Hẹn;
+  if (Lưu Thành Công?) then (Có)
+    :Hiển Thị Thông Báo "Lịch Hẹn Đã Được Tạo, Vui Lòng Đợi Xác Nhận";
+  else (Không)
+    :Hiển Thị Thông Báo "Lỗi: Không Thể Tạo Lịch Hẹn";
+  endif
+  |Hệ Thống|
+else (Không)
+  :Hiển Thị Thông Báo "Vui Lòng Chọn Tạo Lịch Hẹn Xem Xe";
+endif
+|Người Dùng|
+stop
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+|Người Dùng|
+start
+:Chọn Lịch Hẹn Cần Hủy;
+:Người Dùng Xác Nhận Hủy Lịch Hẹn;
+|Hệ Thống|
+if (Xác Nhận Hủy?) then (Có)
+  :Kiểm Tra Lịch Hẹn;
+  if (Lịch Hẹn Tồn Tại?) then (Có)
+    :Hủy Lịch Hẹn trong Cơ Sở Dữ Liệu;
+    if (Hủy Thành Công?) then (Có)
+      :Hiển Thị Thông Báo "Lịch Hẹn Đã Được Hủy";
+    else (Không)
+      :Hiển Thị Thông Báo "Lỗi: Không Thể Hủy Lịch Hẹn";
+    endif
+  else (Không)
+    :Hiển Thị Thông Báo "Lịch Hẹn Không Tồn Tại";
+  endif
+  |Hệ Thống|
+else (Không)
+  :Hiển Thị Thông Báo "Hủy Lịch Hẹn Đã Bị Hủy";
+endif
+|Người Dùng|
+stop
+@enduml

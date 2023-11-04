@@ -1,0 +1,16 @@
+@startuml
+left to right direction
+actor "Nhân Viên" as employee
+rectangle "Hệ Thống" {
+  usecase "Xem Danh Sách Giao Dịch" as viewTransactions
+  usecase "Chuẩn Bị Xe Giao Dịch" as prepareCar
+  usecase "Cập Nhật Trạng Thái Giao Dịch" as updateTransactionStatus
+}
+
+employee --> viewTransactions
+employee --> prepareCar 
+employee --> updateTransactionStatus 
+
+prepareCar ..> (Xác Nhận Chuẩn Bị) : <<inclued>>
+updateTransactionStatus ..> (Cập Nhật Trạng Thái) : <<include>>
+@enduml

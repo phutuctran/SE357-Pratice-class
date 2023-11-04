@@ -1,0 +1,17 @@
+@startuml
+left to right direction
+actor "Nhân Viên" as employee
+rectangle "Hệ Thống" {
+  usecase "Thêm Xe Ô Tô" as addCar
+  usecase "Sửa Thông Tin Xe Ô Tô" as editCar
+  usecase "Xóa Xe Ô Tô" as deleteCar
+}
+
+employee --> addCar 
+employee --> editCar
+employee --> deleteCar 
+
+addCar ..> (Lưu Thông Tin) : <<include>>
+editCar ..> (Lưu Thông Tin): <<include>>
+deleteCar ..> (Xác Nhận Xóa): <<include>>
+@enduml

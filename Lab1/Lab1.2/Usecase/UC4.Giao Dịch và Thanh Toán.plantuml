@@ -1,0 +1,29 @@
+@startuml
+left to right direction
+actor "Người Mua" as buyer
+actor "Hệ Thống Thanh Toán" as paymentSystem
+actor "Dịch vụ tài chính" as FinacialSupportServiceUnit
+rectangle "Hệ Thống" {
+  usecase "Tạo Giao Dịch" as createTransaction
+  usecase "Cập Nhật Trạng Thái Giao Dịch" as updateTransactionStatus
+  usecase "Thanh Toán" as makePayment
+}
+usecase "Ví e-wallet" as ByeWallet
+usecase "Trả thẻ" as ByCard
+usecase "Trả góp" as ByInstallment
+usecase "Tiền mặt" as ByCash
+
+buyer --> createTransaction 
+buyer --> updateTransactionStatus 
+buyer --> makePayment
+createTransaction ..> (Xác Nhận Giao Dịch) : <<include>>
+updateTransactionStatus ..> (Cập Nhật Trạng Thái):<<include>>
+makePayment ..> (ByeWallet): <<extend>> 
+makePayment ..> (ByCash): <<extend>> 
+makePayment ..> (ByInstallment): <<extend>> 
+makePayment ..> (ByCard): <<extend>> 
+(ByCard) --> paymentSystem
+(ByeWallet) --> paymentSystem
+(ByInstallment)--> FinacialSupportServiceUnit
+
+@enduml

@@ -6,14 +6,14 @@ rectangle "Hệ Thống" {
   usecase "Đăng Nhập" as login
   usecase "Đăng Ký" as register
   usecase "Quản Lý Hồ Sơ" as manageProfile
+  usecase "Quên Mật Khẩu" as forgotPassword
 }
 
 user --> login 
 user --> register 
 user --> manageProfile
+user --> forgotPassword
 
-login ..> (Xác Thực Đăng Nhập) : <<include>>
-register ..> (Xác Thực Đăng Ký) : <<include>>
 manageProfile ..> (Xem Hồ Sơ) : <<extend>>
 manageProfile ..> (Chỉnh Sửa Hồ Sơ) : <<extend>>
 manageProfile ..> (Đổi Mật Khẩu) : <<extend>>

@@ -1,0 +1,35 @@
+@startuml
+
+object Ngườidùng
+object Quảnlýcôngnợ 
+object Xe
+object HợpĐồng
+object Dịchvụvậnchuyển
+object Dịchvụbảohiểm
+object Dịchvụbảodưỡng
+object Báocáo
+object Database
+
+Ngườidùng -- HợpĐồng : "Tạo"
+Ngườidùng -- Xe : "Tìm kiếm, chọn"
+Ngườidùng -- Dịchvụvậnchuyển : "lựa chọn"
+Ngườidùng -- Dịchvụbảohiểm : "Lựa chọn"
+Ngườidùng -- Dịchvụbảodưỡng : "Lựa chọn"
+Ngườidùng -- Quảnlýcôngnợ : "Bao gồm"
+
+Xe -- HợpĐồng : "Thêm"
+
+
+HợpĐồng -- Dịchvụvậnchuyển : "Áp dụng"
+HợpĐồng -- Dịchvụbảohiểm : "Áp dụng"
+HợpĐồng -- Dịchvụbảodưỡng : "Áp dụng"
+
+Database --  Ngườidùng : "Quản lí"
+Database -- Xe : "Quản lí"
+Database -- HợpĐồng : "Quản lí"
+Database -- Dịchvụvậnchuyển : "Quản lí"
+Database -- Dịchvụbảohiểm : "Quản lí"
+Database -- Dịchvụbảodưỡng : "Quản lí"
+Database -- Báocáo : "Quản lí"
+
+@enduml

@@ -15,6 +15,12 @@ class User{
     bool register() 
     bool updateProfile()
 }
+class DebtManagement {
+  userId: String
+  totalDebt: Double
+  updateDebt(newDebt: Double): Boolean
+  viewDebtDetails(): String
+}
 
 class Car{
     int carId 
@@ -47,6 +53,11 @@ class CarDetail{
     bool EditCar()
     bool DeleteCar()
     void ViewCarDetail()
+}
+class Inventory {
+  carId: int
+  quantity: int
+  updateQuantity(newQuantity: int): Boolean
 }
 
 class Transaction{
@@ -110,12 +121,14 @@ InsuranceService --|> Services
 FinacialSuportService --|> Services
 
 User -- Transaction
+User -- DebtManagement
 Transaction -- Car
 Transaction -- ShippingService
 Transaction -- InsuranceService
 Transaction -- MaintenanceService
 Transaction -- PaymentService
 Transaction -- FinacialSuportService
+Inventory -- Car
 Report --> Transaction
 
 'Composition Relationship

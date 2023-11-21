@@ -1,0 +1,5 @@
+1.vẽ thêm tính năng quên mật khẩu khi người dùng đăng nhập và bổ sung vào SRS
+2.Ở usecase 3, sưa Xác nhận lịch hẹn thành tạo lịch hẹn
+3.Ở UC3, thêm tính nangw xác nhận lịch hẹn và sổ sung ảnh nh vào SRS
+
+--> Vẽ sequence cho tất cả

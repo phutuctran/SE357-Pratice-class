@@ -10,23 +10,28 @@ if (Xe và Hình Thức Trả Góp Được Chọn?) then (no)
 else (yes)
   :Kiểm Tra Tình Hình Tài Chính;
   if (Tài Chính Đủ Để Trả Góp?) then (yes)
-    :Xác Nhận Thanh Toán Trả Góp;
-    :Tạo Hợp Đồng Trả Góp và Gửi Đến Bên Thứ 3;
-    |Bên Thứ 3|
-    :Phê Duyệt Hợp Đồng Trả Góp;
-    :Xác Nhận Hợp Đồng Với Hệ Thống;
-    |Hệ Thống|
-    if (Hợp Đồng Được Phê Duyệt?) then (yes)
-      :Chuẩn Bị Hồ Sơ Thanh Toán Trả Góp;
-      :Hiển Thị Hồ Sơ và Hướng Dẫn Người Dùng Thanh Toán;
-      |Người Dùng|
-      :Thực Hiện Thanh Toán Theo Hướng Dẫn;
+    if (Kiểm Tra Không Bị Vướng Công Nợ) then (yes)
+      :Xác Nhận Thanh Toán Trả Góp;
+      :Tạo Hợp Đồng Trả Góp và Gửi Đến Bên Thứ 3;
+      |Bên Thứ 3|
+      :Phê Duyệt Hợp Đồng Trả Góp;
+      :Xác Nhận Hợp Đồng Với Hệ Thống;
       |Hệ Thống|
-      :Xác Nhận Thanh Toán Đã Nhận Được;
-      :Cập Nhật Trạng Thái Giao Dịch (Ví Dụ: Đã Thanh Toán);
-      :Hiển Thị Thông Báo Thanh Toán Thành Công;
+      if (Hợp Đồng Được Phê Duyệt?) then (yes)
+        :Chuẩn Bị Hồ Sơ Thanh Toán Trả Góp;
+        :Hiển Thị Hồ Sơ và Hướng Dẫn Người Dùng Thanh Toán;
+        |Người Dùng|
+        :Thực Hiện Thanh Toán Theo Hướng Dẫn;
+        |Hệ Thống|
+        :Xác Nhận Thanh Toán Đã Nhận Được;
+        :Cập Nhật Trạng Thái Giao Dịch (Ví Dụ: Đã Thanh Toán);
+        :Hiển Thị Thông Báo Thanh Toán Thành Công;
+        :Cập Nhật Lại Công Nợ Hiện Tại;
+      else (no)
+        :Hiển Thị Thông Báo Lỗi (Ví Dụ: Hợp Đồng Không Được Phê Duyệt);
+      endif
     else (no)
-      :Hiển Thị Thông Báo Lỗi (Ví Dụ: Hợp Đồng Không Được Phê Duyệt);
+      :Hiển Thị Thông Báo Lỗi (Ví Dụ: Có Vấn Đề Về Công Nợ);
     endif
   else (no)
     :Hiển Thị Thông Báo Lỗi (Ví Dụ: Tài Chính Không Đủ);

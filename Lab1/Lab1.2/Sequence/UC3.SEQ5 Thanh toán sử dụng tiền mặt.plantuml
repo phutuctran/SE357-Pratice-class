@@ -1,0 +1,22 @@
+@startuml
+title Thanh Toán Bằng Tiền Mặt - Sequence Diagram
+
+actor "Người Dùng" as user
+participant "Hệ Thống" as system
+database "Cơ sở dữ liệu" as database
+
+activate user
+user -> system: Yêu Cầu Thanh Toán Bằng Tiền Mặt 
+activate system
+system -> system: Xác Nhận Giao Dịch và Tính Tiền 
+system --> user: Xuất Hóa Đơn và Thông Tin Thanh Toán
+user -> system: Thanh toán tiền mặt
+system -> system: Xác Nhận đủ tiền
+system -> database: Cập nhật trạng thái giao dịch của hợp đồng
+activate database
+database --> system: Xác nhập cập nhật giao dịch
+deactivate database
+system --> user: Xuất Hóa Đơn và Thông Tin Thanh Toán
+deactivate system
+deactivate user
+@enduml

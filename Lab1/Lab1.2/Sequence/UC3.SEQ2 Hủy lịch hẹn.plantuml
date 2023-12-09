@@ -21,7 +21,7 @@ alt Lịch Hẹn Có Thể Hủy
     system -> user: Xác Nhận Hủy Lịch Hẹn Thành Công
 else Lịch Hẹn Không Thể Hủy
     system -> user: Thông Báo Lịch Hẹn Không Thể Hủy
+    deactivate system
 end
-deactivate system
 deactivate user
 @enduml

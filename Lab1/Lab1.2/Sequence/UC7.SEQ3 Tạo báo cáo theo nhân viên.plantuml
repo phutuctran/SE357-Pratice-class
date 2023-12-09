@@ -1,0 +1,31 @@
+@startuml
+title Tạo Báo Cáo theo nhân viên - Sequence Diagram
+
+actor "Người Dùng" as user
+participant "Hệ Thống" as system
+database "Cơ Sở Dữ Liệu" as database
+
+activate user
+user -> system: Chọn tạo báo cáo theo nhân viên
+activate system
+system ->database: Truy vấn danh sách nhân viên
+activate database
+database --> system: Trả về dữ liệu danh sách
+deactivate database
+system --> user: Hiển thị danh sách nhân viên
+user -> system: Chọn nhân viên và chọn thời gian
+system -> database: Truy vấn Dữ Liệu Cần Tạo Báo Cáo
+activate database
+database --> system: Trả về Dữ Liệu Để Tạo Báo Cáo
+deactivate database
+system -> system: Tạo Báo Cáo
+system --> user: Hiển thị báo cáo
+user -> system: Xác nhận lưu và xuất báo cáo
+system -> database: Lưu Báo Cáo Vào Cơ Sở Dữ Liệu
+activate database
+database --> system: Xác Nhận Lưu Báo Cáo
+deactivate database
+system --> user: Hiển Thị Kết Quả (Tạo Báo Cáo Thành Công hoặc Lỗi)
+deactivate system
+deactivate user
+@enduml

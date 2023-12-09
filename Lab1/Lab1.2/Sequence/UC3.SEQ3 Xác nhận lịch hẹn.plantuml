@@ -1,0 +1,33 @@
+@startuml
+title Xác nhận lịch Hẹn Xem Xe - Sequence Diagram with System Constraints
+
+actor "Người Dùng" as user
+participant "Hệ Thống" as system
+database "Cơ Sở Dữ Liệu" as database
+
+activate user
+user -> system: Chọn Xe Cần Xem và Thời Gian Đặt Lịch Hẹn
+activate system
+system -> system: Kiểm Tra Lịch Hẹn có sẵn trong Thời Gian Đã Chọn hay không
+alt Lịch Hẹn Khả Dụng
+    system -> database: Lấy Dữ Liệu Lịch Hẹn Tương Ứng
+    activate database
+    database --> system: Trả Về Dữ Liệu Lịch Hẹn
+    deactivate database
+    system -> system: Kiểm Tra Xem Thời Gian Đã Được Đặt chưa
+    alt Thời Gian Đã Được Đặt
+        system -> user: Thông Báo Rằng Thời Gian Đã Được Đặt
+    else Thời Gian Chưa Được Đặt
+        system -> database: Lưu Lịch Hẹn vào Cơ Sở Dữ Liệu
+        activate database
+        database --> system: Xác Nhận Lưu Lịch Hẹn
+        deactivate database
+        system -> user: Xác Nhận Đặt Lịch Hẹn Thành Công
+    end
+else Lịch Hẹn Không Khả Dụng
+    system -> user: Thông Báo Lịch Hẹn Không Khả Dụng
+end
+deactivate system
+deactivate user
+@enduml
+

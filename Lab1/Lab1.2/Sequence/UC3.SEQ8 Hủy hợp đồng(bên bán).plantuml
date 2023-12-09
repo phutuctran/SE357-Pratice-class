@@ -1,0 +1,38 @@
+@startuml
+title hủy hợp đồng - bên bán - Sequence Diagram
+actor "Người Dùng" as user
+participant "Hệ Thống" as system
+participant "Dịch vụ thanh toán" as paymentSystem
+database "Cơ Sở Dữ Liệu" as database
+
+activate user
+user -> system: Chọn "Danh Sách Giao Dịch"
+activate system
+system -> database: Truy Vấn Giao Dịch
+activate database
+database --> system: Danh Sách Giao Dịch
+deactivate database
+system -> user: Hiển Thị Danh Sách Giao Dịch
+user -> system: Chọn Giao Dịch Cần Hủy
+system -> system: Kiểm Tra Trạng Thái Giao Dịch
+system -> database: Truy Vấn Chi Tiết Giao Dịch
+activate database
+database --> system: Chi Tiết Giao Dịch
+deactivate database
+system -> user: Hiển Thị Chi Tiết Giao Dịch
+user -> system: Chọn "Hủy Hợp Đồng"
+system -> system: Hủy Hợp Đồng Mua Bán
+system -> paymentSystem: Yêu cầu hoàn tiền
+activate paymentSystem
+paymentSystem -> paymentSystem: Thực hiện hoàn tiền
+paymentSystem --> system: Kết quả hoàn tiền
+deactivate paymentSystem
+system -> system: Kiểm tra kết quả hoàn tiền
+system -> database: Cập Nhật Trạng Thái Giao Dịch
+activate database
+database --> system: Cập Nhật Thành Công
+deactivate database
+system -> user: Hiển Thị Kết Quả Hủy Hợp Đồng
+deactivate user
+deactivate system
+@enduml

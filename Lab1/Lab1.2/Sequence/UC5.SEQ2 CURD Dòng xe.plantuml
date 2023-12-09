@@ -1,0 +1,33 @@
+@startuml
+title CURD Dòng xe - Sequence Diagram
+
+actor "Người Dùng" as user
+participant "Hệ Thống" as system
+database "Cơ Sở Dữ Liệu" as database
+
+activate user
+user -> system: Chọn Hãng xe
+activate system
+system -> database: Truy vấn danh sách dòng xe
+activate database
+database --> system: Trả về danh sách dòng xe
+deactivate database
+system -> user: Hiển Thị danh sách dòng xe
+
+user -> system: Chọn dòng xe
+system -> database: Truy vấn Thông Tin dòng xe
+activate database
+database --> system: Trả về Thông Tin Dòng xe
+deactivate database
+system -> user: Hiển Thị Thông Tin dòng xe
+user -> system: CURD Dòng xe
+system -> system: Xác Nhận Thông Tin Sửa
+system -> database: Cập Nhật Thông Tin dòng xe vào Cơ Sở Dữ Liệu
+activate database
+database --> system: Xác Nhận Lưu Thông Tin Sửa
+deactivate database
+system --> user: Hiển Thị Kết Quả (Thành Công hoặc Lỗi)
+deactivate system
+deactivate user
+@enduml
+

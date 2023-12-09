@@ -1,0 +1,25 @@
+@startuml
+title CURD Gói khuyến mãi - Sequence Diagram
+
+actor "Người Dùng" as user
+participant "Hệ Thống" as system
+database "Cơ Sở Dữ Liệu" as database
+
+activate user
+user -> system: Yêu Cầu xem gói khuyến mãi
+activate system
+system -> database: Truy vấn thông tin gói khuyến mãi
+activate database
+database --> system: Trả về thông tin gói khuyễn mãi
+deactivate database
+system --> user: Hiển Thị thông tin gói khuyến mãi
+user -> system: CURD Thông tin
+system -> database: Lưu thông tin thay đổi
+activate database
+database --> system: Truy vấn CSDL
+deactivate database
+system --> user: Thông báo CURD thành công
+
+deactivate system
+deactivate user
+@enduml

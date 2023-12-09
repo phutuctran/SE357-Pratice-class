@@ -1,0 +1,27 @@
+@startuml
+title CURD Số lượng tồn Xe Ô Tô - Sequence Diagram
+
+actor "Người Dùng" as user
+participant "Hệ Thống" as system
+database "Cơ Sở Dữ Liệu" as database
+
+
+activate user
+user -> system: Chọn mẫu xe
+activate system
+system -> database: Truy vấn số lượng xe còn tồn theo từng mẫu
+activate database
+database --> system: Trả về Thông Tin 
+deactivate database
+system -> user: Hiển Thị số lượng xe còn tồn theo từng mẫu
+user -> system: CURD số lượng
+system -> system: Xác Nhận Thông Tin Sửa
+system -> database: Cập Nhật Thông Tin xe vào Cơ Sở Dữ Liệu
+activate database
+database --> system: Xác Nhận Lưu Thông Tin Sửa
+deactivate database
+system --> user: Hiển Thị Kết Quả (Thành Công hoặc Lỗi)
+deactivate system
+deactivate user
+@enduml
+

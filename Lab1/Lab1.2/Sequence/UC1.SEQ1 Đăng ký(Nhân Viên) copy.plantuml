@@ -1,0 +1,19 @@
+@startuml
+title Đăng Ký Tài khoản nhân viên - Sequence Diagram
+
+actor "Quản lí" as user
+participant "Hệ Thống" as system
+database "Cơ Sở Dữ Liệu" as database
+
+activate user
+user -> system: Nhập Thông Tin Đăng Ký (Tên Đăng Nhập, Mật Khẩu, Email)
+activate system
+system -> database: Kiểm Tra Tên Đăng Nhập và Email (để đảm bảo không trùng lặp)
+activate database
+database --> system: Truy vấn Cơ Sở Dữ Liệu
+deactivate database
+system --> user: Xác Nhận Đăng Ký Thành Công hoặc Báo Lỗi
+deactivate system
+
+deactivate user
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+title Đăng Nhập Người Dùng - Sequence Diagram
+
+actor "Người Dùng" as user
+participant "Hệ Thống" as system
+database "Cơ Sở Dữ Liệu" as database
+
+activate user
+activate system
+user -> system: Nhập Tên Đăng Nhập và Mật Khẩu
+system -> database: Truy vấn Tên Đăng Nhập và Mật Khẩu
+activate database
+database --> system: Kiểm Tra Tên Đăng Nhập và Mật Khẩu
+deactivate database
+system --> user: Xác Nhận Đăng Nhập Thành Công hoặc Thất Bại
+deactivate system
+deactivate user
+@enduml

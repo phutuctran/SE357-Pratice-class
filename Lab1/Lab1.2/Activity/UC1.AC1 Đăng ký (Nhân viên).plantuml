@@ -1,11 +1,11 @@
 @startuml
-|Người Dùng|
+|Quản lí|
 start
 :(1)Click "Tạo tài khoản";
 |Hệ Thống|
 repeat
   :(2)Mở form Tạo tài khoản dành cho nhân viên;
-  |Người Dùng|
+  |Quản lí|
   repeat 
   :(3)Nhập Thông Tin Đăng Ký (Tên, Email, Mật Khẩu);
   :(4)Click "Xác nhận";

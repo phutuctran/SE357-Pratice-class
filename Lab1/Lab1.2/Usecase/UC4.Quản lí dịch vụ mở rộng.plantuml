@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+actor "Nhân Viên/Quản lí" as employee
+rectangle "Quản lí dịch vụ" {
+  usecase "CURD Gói khuyến mãi" as curdAd
+  usecase "CURD Dịch vụ vận chuyển" as curdDelivery
+  usecase "CURD Dịch vụ bảo hiểm" as curdInsurance
+
+  curdAd ..> (Kiểm tra định dạng dữ liệu) : <<include>>
+  curdDelivery ..> (Kiểm tra định dạng dữ liệu) : <<include>>
+  curdInsurance ..> (Kiểm tra định dạng dữ liệu) : <<include>>
+}
+
+employee --> curdAd
+employee --> curdDelivery
+employee --> curdInsurance
+
+@endumlQuản 

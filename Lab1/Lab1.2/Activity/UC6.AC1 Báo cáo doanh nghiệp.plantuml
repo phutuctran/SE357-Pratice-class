@@ -1,0 +1,23 @@
+@startuml
+|Nhân Viên|
+start
+:(1)Chọn "Bảo cáo kết quả kinh doanh";
+|Hệ Thống|
+  repeat
+    :(2)Hiển Thị Form báo cáo và bảng chọn thời gian;
+    |Nhân Viên|
+    :(3)Chọn Thời gian;
+    |Hệ Thống|
+  backward :(5.1)Thông báo: "Thời gian không hợp lệ!";
+  repeat while ((4)Kiểm tra thời gian hợp lệ?) is (Không)
+  -> (Có);
+  :(5.2)Truy vấn dữ liệu;
+  :(6)Lập bảng báo cáo kinh doanh;
+  |Nhân Viên|
+  :(7)Xác nhận;
+  |Hệ Thống|
+  if ((8)Xuất file?) then (có)
+    :(9)Tạo file Excel và tải xuống;
+endif
+stop
+@enduml

@@ -1,0 +1,45 @@
+@startuml
+|Người Dùng|
+start
+:Chọn Xe và Dịch Vụ Cần Mua;
+|Hệ Thống|
+while (Kiểm tra thông tin khách hàng đẩy đủ?) is (Không)
+  :Mở trang thông tin cá nhân;
+  :Thực hiện UC5;
+endwhile (Có)
+  :Hiển thị trang tạo hợp đồng;
+  |Người Dùng|
+  :Chọn các Thông tin của hợp đồng;
+  :Chọn Phương Thức Thanh Toán;
+  repeat
+    :Người Dùng Xác Nhận Thông Tin Giao Dịch;
+    |Hệ Thống|
+    if (Xác Nhận Thanh Toán?) then (Có)
+      :Xử Lý Thanh Toán;
+      if (Thanh toán bằng tiền mặt) then (Có)
+        :Chuyển thông tin đến bộ phận thu ngân;
+      else (Không)
+        :Chuyển thông tin đến đơn vị tiếp nhận thanh toán;
+      endif
+      |Hệ thống tiếp nhận thanh toán|
+      :Thực hiện thanh toán;
+      |Hệ Thống|
+    else (Không)
+      :Hiển Thị Thông Báo "Giao Dịch Đã Bị Hủy";
+      stop
+    endif
+    backward :Thông báo: "Thanh toán không thành công";
+    repeat while (Thanh toán thành công?) is (Không)
+    -> Có;
+      :Lưu Thông Tin Giao Dịch và Xe vào Cơ Sở Dữ Liệu;
+      if (Lưu Thành Công?) then (Có)
+        :Hiển Thị Thông Báo "Giao Dịch Đã Được Tạo, Cảm Ơn Quý Khách";
+      else (Không)
+        :Hiển Thị Thông Báo "Lỗi: Không Thể Lưu Thông Tin Giao Dịch";
+        :Yêu cầu toàn tiền giao dịch;
+        |Hệ thống tiếp nhận thanh toán|
+        :Hoàn tiền giao dịch;
+      endif
+    |Hệ Thống|
+  stop
+@enduml

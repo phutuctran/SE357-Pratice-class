@@ -1,21 +1,21 @@
 @startuml
 |Người Dùng|
 start
-:Chọn Tạo Lịch Hẹn Xem Xe;
+:(1)Chọn Tạo Lịch Hẹn Xem Xe;
 |Hệ Thống|
-if (Yêu Cầu Được Chọn?) then (Có)
-  |Người Dùng|
-  :Người Dùng Nhập Thông Tin Lịch Hẹn;
+:(2)Hiển thị trang tạo lịch hẹn;
+|Người Dùng|
+repeat 
+  :(3)Người Dùng Nhập Thông Tin Lịch Hẹn;
   |Hệ Thống|
-  :Lưu Thông Tin Lịch Hẹn;
-  if (Lưu Thành Công?) then (Có)
-    :Hiển Thị Thông Báo "Lịch Hẹn Đã Được Tạo, Vui Lòng Đợi Xác Nhận";
+  backward :(5.1)Thông báo "Thông tin chưa chính xác";
+  repeat while ((4)Kiểm tra thông tin lịch hẹn chính xác?) is (Không)
+  -> Có;
+  :(5.2)Lưu Thông Tin Lịch Hẹn;
+  if ((6)Lưu Thành Công?) then (Có)
+    :(7.1)Hiển Thị Thông Báo "Lịch Hẹn Đã Được Tạo, Vui Lòng Đợi Xác Nhận";
   else (Không)
-    :Hiển Thị Thông Báo "Lỗi: Không Thể Tạo Lịch Hẹn";
+   :(7.2)Hiển Thị Thông Báo "Lỗi: Không Thể Tạo Lịch Hẹn";
   endif
-  |Hệ Thống|
-else (Không)
-  :Hiển Thị Thông Báo "Vui Lòng Chọn Tạo Lịch Hẹn Xem Xe";
-endif
-stop
+  stop
 @enduml

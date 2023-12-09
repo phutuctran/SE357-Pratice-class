@@ -1,0 +1,33 @@
+@startuml
+|Nhân Viên|
+start
+:(1)Chọn Xem Lịch Hẹn ;
+|Hệ Thống|
+:(2)Truy vấn và hiển thị lịch xem xe;
+|Nhân Viên|
+:(3)Chọn Lịch xem xe cụ thể;
+|Hệ Thống|
+:(4)Truy vấn và hiển thị lịch xem xe chi tiết;
+|Nhân Viên|
+:(5)Xác nhận lịch xem xe;
+|Hệ Thống|
+if ((6)xác nhận?) then (Có)
+    :(7.1)Lưu Thông Tin Xác nhận;
+    if ((8)Lưu Thành Công?) then (Có)
+        :(9.1)Hiển Thị Thông Báo "Xác nhận thành công";
+        |Người Dùng|
+        :(10)Hiển thị thông báo "Lịch xác nhận thành công";
+    else (Không)
+        |Hệ Thống|
+        :(9.2)Hiển thị thông báo "Lưu xác nhận không thành công";
+    endif
+    |Hệ Thống|
+else (Không)
+    |Hệ Thống|
+    :(7.2)Hiển Thị Thông Báo "Hủy xác nhận thành công";
+    |Người Dùng|
+    :(11)Hiển thị thông báo "Lịch hẹn đã bị hủy";
+endif
+|Hệ Thống|
+stop
+@enduml

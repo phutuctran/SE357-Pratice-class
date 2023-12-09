@@ -1,0 +1,17 @@
+@startuml
+|Người Dùng|
+start
+repeat
+:(1)Nhập Từ Khóa Tìm Kiếm;
+|Hệ Thống|
+backward :(3.2)Hiển Thị Thông Báo "Nhập Từ Khóa Tìm Kiếm";
+repeat while ((2)Kiểm tra từ khóa được nhập?) is (Không)
+  :(3.1)Thực Hiện Tìm Kiếm;
+  if ((4)Xe Tìm Thấy?) then (Có)
+    :(5.1)Hiển Thị Kết Quả Tìm Kiếm;
+  else (Không)
+    :(5.2)Hiển Thị Thông Báo "Không Tìm Thấy Xe Phù Hợp";
+  endif
+|Người Dùng|
+stop
+@enduml

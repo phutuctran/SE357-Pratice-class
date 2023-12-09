@@ -1,0 +1,42 @@
+@startuml
+|Nhân Viên|
+start
+:(1)Chọn mở hợp đồng;
+|Hệ Thống|
+repeat
+:(2)Hiển thị hợp đồng đã chọn;
+|Nhân Viên|
+:(3)Chọn Hủy Hợp Đồng;
+|Hệ Thống|
+backward :(5.1)Thông báo: "Hợp đồng đã kết thúc hoặc không còn hiệu lực";
+repeat while ((4)Kiểm Tra Hợp Đồng Hiệu Lực?) is (Không hiệu lực)
+-> (Còn hiệu lực);
+  :(5.2)Thực hiện Hủy Hợp Đồng;
+  if ((6)Đã Thanh Toán) then (Có)
+    :(7.1)Xử Lý Hoàn Tiền;
+    :(8)Gửi Thông Báo Hoàn Tiền Đến Khách Hàng;
+    |Khách Hàng|
+    :(9)Xác Nhận Hoàn Tiền;
+    |Hệ Thống|
+    if ((10)Xác Nhận Hoàn Tiền) then (Đã Xác Nhận)
+      :(11.1)Thực Hiện Hoàn Tiền;
+      if ((12)Khách Hàng Thanh Toán Tiền Mặt) then (không)
+        :(13.1)Liên Kết Các Phương Thức Thanh Toán Để Thực Hiện Hoàn Tiền;
+        if ((14)Hoàn Tiền Thành Công) then (Không)
+          :(15.1)Thông Báo Lỗi;
+        else (Có)
+          :(15.2)Thông Báo Hủy Thành Công;
+        endif
+      else (Có)
+        :(13.2)Gửi yêu cầu khách hàng đến showroom để nhận lại tiền hợp đồng;
+      endif
+    else (Chưa Xác Nhận)
+      :(11.2)Gửi Thông Báo Lỗi;
+    endif
+  else (Không)
+    :(7.2)Gửi Thông Báo Hủy Hợp Đồng;
+  endif
+  :(16)Cập Nhật Trạng Thái Hợp Đồng;
+|Hệ Thống|
+stop
+@enduml

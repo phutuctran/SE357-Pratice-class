@@ -1,24 +1,27 @@
 @startuml
 |Người Dùng|
 start
-:Chọn Lịch Hẹn Cần Hủy;
-:Người Dùng Xác Nhận Hủy Lịch Hẹn;
+:(1)Chọn Lịch Hẹn Cần Hủy;
 |Hệ Thống|
-if (Xác Nhận Hủy?) then (Có)
-  :Kiểm Tra Lịch Hẹn;
-  if (Lịch Hẹn Tồn Tại?) then (Có)
-    :Hủy Lịch Hẹn trong Cơ Sở Dữ Liệu;
-    if (Hủy Thành Công?) then (Có)
-      :Hiển Thị Thông Báo "Lịch Hẹn Đã Được Hủy";
+:(2)Hiển thị thông tin lịch hẹn;
+|Người Dùng|
+:(3)Người Dùng Xác Nhận Hủy Lịch Hẹn;
+|Hệ Thống|
+if ((4)Xác Nhận Hủy?) then (Có)
+  :(5.1)Kiểm Tra Lịch Hẹn;
+  if ((6)Lịch Hẹn Tồn Tại?) then (Có)
+    :(7.1)Hủy Lịch Hẹn trong Cơ Sở Dữ Liệu;
+    if ((8)Hủy Thành Công?) then (Có)
+      :(9.1)Hiển Thị Thông Báo "Lịch Hẹn Đã Được Hủy";
     else (Không)
-      :Hiển Thị Thông Báo "Lỗi: Không Thể Hủy Lịch Hẹn";
+      :(9.2)Hiển Thị Thông Báo "Lỗi: Không Thể Hủy Lịch Hẹn";
     endif
   else (Không)
-    :Hiển Thị Thông Báo "Lịch Hẹn Không Tồn Tại";
+    :(7.2)Hiển Thị Thông Báo "Lịch Hẹn Không Tồn Tại";
   endif
   |Hệ Thống|
 else (Không)
-  :Hiển Thị Thông Báo "Hủy Lịch Hẹn Đã Bị Hủy";
+  :(5.2)Hiển Thị Thông Báo "Hủy Lịch Hẹn Đã Bị Hủy";
 endif
 stop
 @enduml

@@ -1,0 +1,26 @@
+@startuml
+|Nhân Viên|
+start
+:(1)Chọn "Quản Lý Khuyến Mãi";
+|Hệ Thống|
+repeat 
+  repeat
+    :(2)Hiển Thị Danh Sách Khuyến Mãi;
+    |Nhân Viên|
+    :(3)Chọn Gói khuyến mãi;
+    |Hệ Thống|
+  backward :(5.1)Thông báo: "Gói Khuyến Mãi hiện không tồn tại!";
+  repeat while ((4)Kiểm tra gói KM còn tồn tại?) is (Không)
+  -> (Có);
+  :(5.2)Hiển Thị Chi Tiết Gói Khuyến Mãi;
+  |Nhân Viên|
+  :(6)Thực hiện CURD gói khuyến mãi;
+  |Hệ Thống|
+  :(7)Kiểm Tra Thông Tin;
+backward :(9.1)Hiển thị thông báo lỗi;
+repeat while ((8)Thông tin hợp lệ?) is (Không)
+-> (Có);
+  :(9.2)Cập nhật thông tin mới;
+  :(10)Thông báo đã thực hiện;
+stop
+@enduml

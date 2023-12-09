@@ -1,0 +1,26 @@
+@startuml
+|Nhân Viên|
+start
+:(1)Chọn "Quản Lý Gói Bảo Hiểm";
+|Hệ Thống|
+repeat 
+  repeat
+    :(2)Hiển Thị Danh Sách các gói Bảo hiểm;
+    |Nhân Viên|
+    :(3)Chọn Gói Bảo hiểm;
+    |Hệ Thống|
+  backward :(5.1)Thông báo: "Gói Bảo hiểm hiện không tồn tại!";
+  repeat while ((4)Kiểm tra gói BH còn tồn tại?) is (Không)
+  -> (Có);
+  :(5.2)Hiển Thị Chi Tiết Gói Bảo hiểm;
+  |Nhân Viên|
+  :(6)Thực hiện CURD gói bảo hiểm;
+  |Hệ Thống|
+  :(7)Kiểm Tra Thông Tin;
+backward :(9.1)Hiển thị thông báo lỗi;
+repeat while ((8)Thông tin hợp lệ?) is (Không)
+-> (Có);
+  :(9.2)Cập nhật thông tin mới;
+  :(10)Thông báo đã thực hiện;
+stop
+@enduml

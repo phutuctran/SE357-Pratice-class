@@ -1,0 +1,21 @@
+@startuml
+|Nhân Viên|
+start
+:(1)Chọn Xe Muốn Sửa Thông Tin;
+|Hệ Thống|
+if ((2)Kiểm tra thông tin xe còn tồn tại?) then (yes)
+  repeat 
+    :(3.1)Hiển Thị Form Hiện Thông Tin Xe Ô Tô;
+    |Nhân Viên|
+    :(4)Thực Hiện CURD Thông Tin Xe Ô Tô;
+    |Hệ Thống|
+    backward :(6.1)Hiển Thị Thông Báo Lỗi (Ví Dụ: Thông Tin Thiếu Hoặc Không Hợp Lệ);
+    repeat while ((5)Thông Tin Đầy Đủ và Hợp Lệ?) is (Không)
+    -> (Có);
+    :(6.2)Cập Nhật Thông Tin Xe Ô Tô vào Cơ Sở Dữ Liệu;
+    :(7)Xác Nhận Sửa Thông Tin Xe Ô Tô Thành Công;
+else (no)
+  :(3.2)Thông báo: "Thông tin xe không còn tồn tại!";
+endif
+stop
+@enduml

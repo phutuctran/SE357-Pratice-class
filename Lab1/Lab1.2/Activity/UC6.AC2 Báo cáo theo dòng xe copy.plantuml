@@ -1,0 +1,27 @@
+@startuml
+|Nhân Viên|
+start
+:(1)Chọn "Bảo cáo kết quả kinh doanh Thèo dòng xe";
+|Hệ Thống|
+repeat
+  :(2)Hiển thị danh sách dòng xe;
+  |Nhân Viên|
+  :(3)Chọn dòng xe;
+  |Hệ Thống|
+  :(4)Hiển Thị Form báo cáo và bảng chọn thời gian;
+  |Nhân Viên|
+  :(5)Chọn Thời gian;
+  |Hệ Thống|
+backward :(7.1)Thông báo: "Thông tin không hợp lệ!";
+repeat while ((6)Thông tin chọn hợp lệ?) is (Không)
+-> (Có);
+  :(7.2)Truy vấn dữ liệu;
+  :(8)Lập bảng báo cáo kinh doanh;
+  |Nhân Viên|
+  :(9)Xác nhận;
+  |Hệ Thống|
+  if ((10)Xuất file?) then (có)
+    :(11)Tạo file Excel và tải xuống;
+endif
+stop
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+left to right direction
+actor "Người Dùng" as user
+actor "Nhân viên" as NV
+actor "Quản lí" as QL
+actor "Khách hàng" as KH
+rectangle "Truy vấn thông tin xe" {
+  usecase "Tìm Kiếm Xe Ô Tô" as search
+  usecase "Xem Chi Tiết Xe Ô Tô" as viewDetails
+
+  search ..> (Tìm kiếm theo từ khóa) : <<extend>>
+  search ..> (Tìm kiếm theo hạng mục) : <<extend>>
+}
+
+user --> search 
+user --> viewDetails 
+
+KH --|> user
+NV --|> user
+QL --|> user
+@enduml

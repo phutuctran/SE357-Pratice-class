@@ -1,17 +1,21 @@
 @startuml
 left to right direction
-actor "Nhân Viên" as employee
-rectangle "Hệ Thống" {
-  usecase "Thêm Xe Ô Tô" as addCar
-  usecase "Sửa Thông Tin Xe Ô Tô" as editCar
-  usecase "Xóa Xe Ô Tô" as deleteCar
+actor "Nhân Viên/Quản lí" as employee
+rectangle "Quản lí thông tin xe oto" {
+  usecase "CURD Hãng xe" as curdBrand
+  usecase "CURD Dòng xe" as curdModel
+  usecase "CURD Thông tin xe tiết" as curdInfo 
+  usecase "CURD Số lượng xe tồn" as curdQuantity
+
+  curdBrand ..> (Kiểm tra định dạng dữ liệu) : <<include>>
+  curdModel ..> (Kiểm tra định dạng dữ liệu) : <<include>>
+  curdInfo ..> (Kiểm tra định dạng dữ liệu) : <<include>>
+  curdQuantity ..> (Kiểm tra định dạng dữ liệu) : <<include>>
 }
 
-employee --> addCar 
-employee --> editCar
-employee --> deleteCar 
+employee --> curdBrand
+employee --> curdModel
+employee --> curdInfo
+employee --> curdQuantity
 
-addCar ..> (Lưu Thông Tin) : <<include>>
-editCar ..> (Lưu Thông Tin): <<include>>
-deleteCar ..> (Xác Nhận Xóa): <<include>>
 @enduml

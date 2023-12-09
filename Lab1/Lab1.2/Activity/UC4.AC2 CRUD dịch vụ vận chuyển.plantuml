@@ -1,0 +1,26 @@
+@startuml
+|Nhân Viên|
+start
+:(1)Chọn "Quản Lý Gói Vận Chuyển";
+|Hệ Thống|
+repeat 
+  repeat
+    :(2)Hiển Thị Danh Sách đơn vị và phương thức vận chuyển;
+    |Nhân Viên|
+    :(3)Chọn Gói vận chuyển;
+    |Hệ Thống|
+  backward :(5.1)Thông báo: "Gói vận chuyển hiện không tồn tại!";
+  repeat while ((4)Kiểm tra gói VC còn tồn tại?) is (Không)
+  -> (Có);
+  :(5.2)Hiển Thị Chi Tiết Gói vận chuyển;
+  |Nhân Viên|
+  :(6)Thực hiện CURD gói vận chuyển;
+  |Hệ Thống|
+  :(7)Kiểm Tra Thông Tin;
+backward :(9.1)Hiển thị thông báo lỗi;
+repeat while ((8)Thông tin hợp lệ?) is (Không)
+-> (Có);
+  :(9.2)Cập nhật thông tin mới;
+  :(10)Thông báo đã thực hiện;
+stop
+@enduml

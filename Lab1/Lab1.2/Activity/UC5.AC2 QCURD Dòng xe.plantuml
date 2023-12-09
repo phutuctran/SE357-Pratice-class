@@ -1,0 +1,34 @@
+@startuml
+|Nhân Viên|
+start
+:(1)Chọn "Quản Lý Dòng xe";
+|Hệ Thống|
+  repeat
+    :(2)Hiển Thị Danh Sách Các Hãng Xe Đang Bán;
+    |Nhân Viên|
+    :(3)Chọn Hãng xe;
+    |Hệ Thống|
+  backward :(5.1)Thông báo: "Hãng xe hiện không tồn tại!";
+  repeat while ((4)Kiểm tra hãng xe còn tồn tại trong hệ thống?) is (Không)
+  -> (Có);
+  repeat
+    :(5.2)Hiển Thị Danh sách các dòng hãng xe;
+    |Nhân Viên|
+    :(6)Chọn dòng xe;
+    |Hệ Thống|
+  backward :(8.1)Thông báo: "Dòng xe hiện không tồn tại!";
+  repeat while ((7)Kiểm tra dòng xe còn tồn tại trong hệ thống?) is (Không)
+  -> (Có);
+  repeat
+  :(8.2)Hiển thị chi tiết thông tin dòng xe;
+  |Nhân Viên|
+  :(9)Thực hiện CURD thông tin dòng xe;
+  |Hệ Thống|
+  :(10)Kiểm tra thông tin;
+  backward :(12.1)Hiển thị thông báo lỗi;
+  repeat while ((11)Thông tin hợp lệ?) is (Không)
+  -> (Có);
+  :(12.2)Cập nhật thông tin mới;
+  :(13)Thông báo đã thực hiện;
+stop
+@enduml

@@ -1,0 +1,35 @@
+@startuml
+left to right direction
+actor "Người dùng/Khách Hàng" as userCus
+actor "Nhân Viên/Quản lí" as UserAg
+rectangle "Quản lí tài khoản và hồ sơ" {
+  usecase "Đăng Ký\n(Nhân Viên)" as registerAg
+  usecase "Đăng Ký\n(Khách hàng)" as registerCus
+  usecase "Đăng Nhập" as login
+  usecase "CURD Thông tin cá nhân" as CURDProfile
+  usecase "Quên Mật Khẩu" as forgotPassword
+  usecase "Kiểm tra định dạng thông tin" as Checkvalidate
+
+  CURDProfile ..> (Chỉnh sửa thông tin) : <<extend>>
+  CURDProfile ..> (Xóa tài khoản) : <<extend>>
+  CURDProfile ..> (Xem thông tin chi tiết) : <<extend>>
+  (Chỉnh sửa thông tin) ..> Checkvalidate :: <<include>>
+  (Quên mật khẩu) ..> Checkvalidate : <<include>>
+  registerAg ..> Checkvalidate : <<include>>
+  registerCus ..> Checkvalidate : <<include>>
+}
+
+userCus --> login 
+userCus --> registerCus
+userCus --> CURDProfile
+userCus --> forgotPassword
+
+
+UserAg --> login 
+UserAg --> registerAg
+UserAg --> CURDProfile
+UserAg --> forgotPassword
+UserAg --> registerCus
+
+
+@enduml

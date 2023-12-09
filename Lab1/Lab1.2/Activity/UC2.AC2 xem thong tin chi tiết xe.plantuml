@@ -1,0 +1,15 @@
+@startuml
+|Người Dùng|
+start
+repeat
+  :(1)Nhấp vào Xe muốn Xem Chi Tiết;
+  |Hệ Thống|
+repeat while (Đã chọn xe?) is (Không)
+:(2.1)Truy Vấn Thông Tin Chi Tiết của Xe;
+if (Thông Tin Tìm Thấy?) then (Có)
+  :(3.1)Hiển Thị Chi Tiết Thông Tin Xe;
+else (Không)
+  :(3.2)Hiển Thị Thông Báo "Không Tìm Thấy Thông Tin Xe";
+endif
+stop
+@enduml

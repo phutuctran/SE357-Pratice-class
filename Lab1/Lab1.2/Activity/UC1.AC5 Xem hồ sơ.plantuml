@@ -1,0 +1,22 @@
+@startuml
+|Người Dùng|
+start
+:(1)Chọn Xem Hồ Sơ Người Dùng;
+|Hệ Thống|
+  if ((2)Hồ Sơ Tồn Tại?) then (Có)
+    :(3.2)Hiển Thị Hồ Sơ Người Dùng;
+    |Người Dùng|
+    :(4)GRUD Thông tin cá nhân;
+    |Hệ Thống|
+    :(5)Xác Thực thông tin mới;
+    if (Xác thực) then (Có)
+      :(6.1)Cập nhật thông tin mới;
+    else (Không)
+      :(6.2)Thông báo lỗi;
+    endif
+  else (Không)
+    |Hệ Thống|
+    :(3.2)Hiển Thị Thông Báo "Hồ Sơ Người Dùng Không Tồn Tại";
+  endif
+stop
+@enduml

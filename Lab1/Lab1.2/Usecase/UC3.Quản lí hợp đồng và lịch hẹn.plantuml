@@ -1,0 +1,46 @@
+@startuml
+left to right direction
+actor "Khách Hàng" as user
+actor "Nhân Viên/Quản lí" as agent
+actor "Hệ thống thanh toán" as PaymentSystem
+actor "Dịch vụ tài chính" as FinacialSupportServiceUnit
+rectangle "Quản lí hợp đồng và lịch hẹn" {
+  usecase "Tạo Lịch Hẹn" as scheduleAppointment
+  usecase "Xác Nhận Lịch Hẹn" as confirmAppointment
+  usecase "Hủy Lịch Hẹn" as cancelAppointment
+
+  usecase "Tạo hợp đồng giao dịch" as createContract
+  usecase "Hủy hợp đồng \n(bên bán)" as cancelContractSeller
+  usecase "Hủy hợp đồng \n(bên mua)" as cancelContractBuyer
+  usecase "Thanh toán hợp đồng" as payContract
+  usecase "Thanh toán tiền mặt" as byCash
+  usecase "Thanh toán sử dụng hệ thống bên ngoài" as byOtherPaymentSystem
+  usecase "Thanh toán trả góp" as byInstallment
+
+  payContract ..> byCash : <<extend>>
+  payContract ..> byInstallment : <<extend>>
+  payContract ..> byOtherPaymentSystem : <<extend>>
+
+  createContract ..> (Kiểm tra dữ liệu)
+  
+
+}
+
+user --> scheduleAppointment 
+user --> cancelAppointment 
+user --> createContract
+user --> cancelContractBuyer
+user --> payContract
+
+
+agent --> scheduleAppointment 
+agent --> cancelAppointment 
+agent --> confirmAppointment
+agent --> createContract
+agent --> cancelContractSeller
+
+byOtherPaymentSystem --> PaymentSystem
+byInstallment --> FinacialSupportServiceUnit
+
+
+@enduml

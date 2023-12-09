@@ -1,0 +1,36 @@
+@startuml
+|Người Dùng|
+start
+:(1)Chọn Quên Mật Khẩu;
+repeat
+    |Hệ Thống|
+    :(2)Hiển Thị Form nhập Email Xác Thực;
+    |Người Dùng|
+    :(3)Người Dùng Nhập Email để xác thực;
+    |Hệ Thống|
+    :(4)Gửi code xác nhận về Email;
+    |Người Dùng|
+    :(5)Nhập code xác thực;
+    |Hệ Thống|
+backward : :(7.2)Hiển Thị Thông Báo "Lỗi: Code Xác Thực Không Hợp Lệ";
+repeat while ((6)Code xác thực không hợp lệ?) is (Không)
+-> Có;
+    repeat
+    :(7.1)Hiển Thị Form nhập mật khẩu mới;
+    |Người Dùng|
+    :(8)Người Dùng Nhập Mật khẩu mới;
+    |Hệ Thống|
+    backward: :(10.1)Thông báo: "Mật khẩu mới không hợp lệ";
+    repeat while  ((9)Kiểm tra mật khẩu hợp lệ?) is (Không)
+    -> Có;
+        :(10.2)Lưu thông tin về database;
+        if ((11)Lưu Thành Công?) then (Có)
+            :(12.1)Hiển Thị Thông Báo "Mật Khẩu Đã Được Đổi";
+        else (Không)
+            :(12.2)Hiển Thị Thông Báo "Lỗi: Không Thể Lưu Mật Khẩu Mới";
+        endif
+        stop
+    
+@enduml
+
+

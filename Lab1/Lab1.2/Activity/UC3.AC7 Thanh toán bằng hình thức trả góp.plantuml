@@ -1,0 +1,43 @@
+@startuml
+|Người Dùng|
+start
+:(1)Chọn Giao Dịch;
+|Hệ Thống|
+repeat
+:(2)Hiển thị giao dịch cần thanh toán;
+|Người Dùng|
+:(3)Chọn hình thức thanh toán trả góp;
+|Hệ Thống|
+backward :(5.1)Thông báo: "Hợp đồng đã thanh toán hoặc không còn hiệu lực";
+repeat while ((4)Giao dịch còn hiệu lực?) is (không)
+-> (Có);
+  :(5.2)Kiểm Tra Tình Hình Tài Chính;
+  if ((6)Tài Chính Đủ Để Trả Góp?) then (yes)
+    if ((7.1)Kiểm Tra Không Bị Vướng Công Nợ) then (yes)
+      :(8.1)Xác Nhận Thanh Toán Trả Góp;
+      :(9)Tạo Hợp Đồng Trả Góp và Gửi Đến Bên Thứ 3;
+      |Bên Thứ 3|
+      :(10)Phê Duyệt Hợp Đồng Trả Góp;
+      :(11)Xác Nhận Hợp Đồng Với Hệ Thống;
+      |Hệ Thống|
+      if ((12)Hợp Đồng Được Phê Duyệt?) then (yes)
+        :(13.1)Chuẩn Bị Hồ Sơ Thanh Toán Trả Góp;
+        :(14)Hiển Thị Hồ Sơ và Hướng Dẫn Người Dùng Thanh Toán;
+        |Người Dùng|
+        :(15)Thực Hiện Thanh Toán Theo Hướng Dẫn;
+        |Hệ Thống|
+        :(16)Xác Nhận Thanh Toán Đã Nhận Được;
+        :(17)Cập Nhật Trạng Thái Giao Dịch (Ví Dụ: Đã Thanh Toán);
+        :(18)Hiển Thị Thông Báo Thanh Toán Thành Công;
+        :(19)Cập Nhật Lại Công Nợ Hiện Tại;
+      else (no)
+        :(13.2)Hiển Thị Thông Báo Lỗi (Ví Dụ: Hợp Đồng Không Được Phê Duyệt);
+      endif
+    else (no)
+      :(8.2)Hiển Thị Thông Báo Lỗi (Ví Dụ: Có Vấn Đề Về Công Nợ);
+    endif
+  else (no)
+    :(7.2)Hiển Thị Thông Báo Lỗi (Ví Dụ: Tài Chính Không Đủ);
+  endif
+stop
+@enduml

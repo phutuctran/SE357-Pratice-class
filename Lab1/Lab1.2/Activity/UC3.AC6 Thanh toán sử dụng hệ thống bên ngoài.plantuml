@@ -1,0 +1,28 @@
+@startuml
+|Người Dùng|
+start
+:(1)Chọn Giao Dịch Cần Thanh Toán;
+|Hệ Thống|
+repeat
+  repeat
+  :(2)Hiển thị thông tin giao dịch;
+  backward :(4.1)Thông báo: "Hợp đồng đã thanh toán hoặc không còn hiệu lực";
+  repeat while ((3)Giao dịch còn hiệu lực?) is (Không) 
+  -> (Có);
+    |Hệ Thống|
+    :(4.2)Chuyển Người Dùng Đến Hệ Thống Thanh Toán Bên Ngoài;
+    |Hệ thống thanh toán|
+    :(5)Thực Hiện Thanh Toán Trên Hệ Thống Bên Ngoài;
+    |Người Dùng|
+    :(6)Xác nhận thanh toán;
+    |Hệ thống thanh toán|
+    :(7)Xác thực thanh toán;
+    |Hệ Thống|
+    backward :(9.1)Hiển Thị Thông Báo Lỗi (Ví Dụ: Thanh Toán Không Thành Công);
+    repeat while ((8)Thanh toán thành công?) then (Không)
+    -> (Có);
+      |Hệ Thống|
+      :(9.2)Cập Nhật Trạng Thái Giao Dịch (Ví Dụ: Đã Thanh Toán);
+      :(10)Hiển Thị Thông Báo Thanh Toán Thành Công;
+stop
+@enduml

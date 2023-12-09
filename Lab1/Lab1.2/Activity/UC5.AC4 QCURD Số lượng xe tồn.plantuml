@@ -1,0 +1,22 @@
+@startuml
+|Nhân Viên|
+start
+:(1)Chọn "Quản lí số lượng xe";
+|Hệ Thống|
+:(2)Hiển thị Danh sách mẫu xe;
+if ((3)Kiểm tra thông tin mẫu xe còn tồn tại?) then (yes)
+  repeat 
+    :(4.1)Hiển Thị Form Số lượng xe tồn theo loại;
+    |Nhân Viên|
+    :(5)Thực Hiện CURD số lượng Xe Ô Tô;
+    |Hệ Thống|
+    backward :(7.1)Hiển Thị Thông Báo Lỗi (Ví Dụ: Thông Tin Thiếu Hoặc Không Hợp Lệ);
+    repeat while ((6)Thông Tin Đầy Đủ và Hợp Lệ?) is (Không)
+    -> (Có);
+    :(7.2)Cập Nhật Thông Tin số lượng Xe Ô Tô vào Cơ Sở Dữ Liệu;
+    :(8)Xác Nhận Cập nhật số lượng Xe Ô Tô Thành Công;
+else (no)
+  :(4.2)Thông báo: "Thông tin mẫu xe không còn tồn tại!";
+endif
+stop
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+left to right direction
+actor "Quản Lý" as manager
+actor "Nhân Viên" as employee
+rectangle "Báo cáo và thống kê" {
+  usecase "Báo cáo kết quả kinh doanh chung" as createReport
+  usecase "Báo cáo kết quả kinh doanh theo dòng xe" as createReportCar
+  usecase "Báo cáo kết quả kinh doanh nhân viên" as createReportEmployee
+  usecase "Xem Báo Cáo" as viewReport
+}
+
+manager --> createReport 
+manager --> viewReport
+manager --> createReportCar
+manager --> createReportEmployee
+
+employee --> createReportEmployee
+employee --> createReportCar 
+employee --> viewReport
+
+@enduml

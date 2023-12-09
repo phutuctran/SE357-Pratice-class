@@ -1,0 +1,23 @@
+@startuml
+|Người Dùng|
+start
+:(1)Người dùng chọn "Đăng nhập";
+repeat
+  |Hệ Thống|
+  :(2)Tải màn hình đăng nhập;
+  |Người Dùng|
+  :(3)Nhập Tên Đăng Nhập và Mật Khẩu;
+  |Hệ Thống|
+  if ((4)Thông Tin Đăng Nhập Đúng?) then (Có)
+    :(5.1)Xác Thực Thông Tin Đăng Nhập;
+    if (Xác Thực Thành Công?) then (Có)
+      :(6.1)Chuyển Hướng Đến Trang Chính;
+      stop
+    else (Không)
+      :(6.2)Hiển Thị Thông Báo "Sai Tên Đăng Nhập hoặc Mật Khẩu";
+    endif
+  else (Không)
+    :(5.2)Hiển Thị Thông Báo "Vui Lòng Nhập Tên Đăng Nhập và Mật Khẩu";
+  endif
+  repeat while
+@enduml

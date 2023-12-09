@@ -1,0 +1,22 @@
+@startuml
+|Người Dùng|
+start
+:(1)Click "Tạo tài khoản";
+|Hệ Thống|
+repeat
+  :(2)Mở form Tạo tài khoản dành cho nhân viên;
+  |Người Dùng|
+  repeat 
+  :(3)Nhập Thông Tin Đăng Ký (Tên, Email, Mật Khẩu);
+  :(4)Click "Xác nhận";
+  |Hệ Thống|
+  backward:  :(6.2)Hiển Thị Thông Báo "Lỗi: Thông Tin Đăng Ký Không Hợp Lệ";
+  repeat while ((5)Thông tin hợp lệ) is (Không)
+  :(6.1)Tạo Tài Khoản Người Dùng;
+  if ((7)Tài Khoản Được Tạo Thành Công?) then (Có)
+    :(8.1)Hiển Thị Thông Báo "Đăng Ký Thành Công";
+  else (Không)
+    :(8.2)Hiển Thị Thông Báo "Lỗi: Tài Khoản Không Thể Tạo";
+  endif
+  stop
+@enduml

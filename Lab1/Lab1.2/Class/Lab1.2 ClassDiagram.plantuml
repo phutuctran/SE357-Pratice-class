@@ -22,11 +22,23 @@ class DebtManagement {
   viewDebtDetails(): String
 }
 
+class CarBrand{
+    int brandId
+    string name
+    string origin
+}
+
+class CarModel{
+    int modelId
+    int brandId
+    string name
+    int type
+}
+
 class Car{
     int carId 
-    string brand 
     string name
-    string model 
+    int modelId 
     string series 
     string sellerId 
     string yearOfManufacture
@@ -101,10 +113,6 @@ class InsuranceService{
     string getCoverageDetails()
 }
 
-class MaintenanceService{
-    string mainternanceSchedule
-    string GetMaintenanceSchedule()
-}
 
 class Report{
     int reportId 
@@ -115,23 +123,23 @@ class Report{
 }
 
 'Inheritance Relationships
-MaintenanceService --|> Services
 ShippingService --|> Services
 InsuranceService --|> Services
 FinacialSuportService --|> Services
 
-User -- Transaction
-User -- DebtManagement
-Transaction -- Car
-Transaction -- ShippingService
-Transaction -- InsuranceService
-Transaction -- MaintenanceService
-Transaction -- PaymentService
-Transaction -- FinacialSuportService
-Inventory -- Car
-Report --> Transaction
+User -- Transaction : 1-n
+User -- DebtManagement : 1-n
+Transaction -- Car : 1-1
+Transaction -- ShippingService : 1-1
+Transaction -- InsuranceService : 1-1
+Transaction -- PaymentService : 1-1
+Transaction -- FinacialSuportService : 1-1
+Inventory -- Car : n-1
+Report --> Transaction : n-n
 
 'Composition Relationship
-Car --* CarDetail
+Car --* CarDetail : 1-n
+CarBrand --* CarModel : 1-n
+CarModel --* Car : 1-n
 
 @enduml
